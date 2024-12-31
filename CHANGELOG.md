@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 1.1.2 (2024-12-31)
+
+- Support php8 in composer.json
+
+- Replaced join by implode.
+
 ## 1.1.1 (2017-07-12)
 
 - Add exception message to `Clx\Xms\UnauthorizedException`.
