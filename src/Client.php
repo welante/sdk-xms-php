@@ -572,12 +572,12 @@ class Client implements \Psr\Log\LoggerAwareInterface
                     }
 
                     if (null != $filter->getSenders()) {
-                        $val = urlencode(join(',', $filter->getSenders()));
+                        $val = urlencode(implode(',', $filter->getSenders()));
                         array_push($params, 'from=' . $val);
                     }
 
                     if (null != $filter->getTags()) {
-                        $val = urlencode(join(',', $filter->getTags()));
+                        $val = urlencode(implode(',', $filter->getTags()));
                         array_push($params, 'tags=' . $val);
                     }
 
@@ -592,7 +592,7 @@ class Client implements \Psr\Log\LoggerAwareInterface
                     }
                 }
 
-                $q = join('&', $params);
+                $q = implode('&', $params);
                 $result = $this->_get($this->_url('/batches?' . $q));
                 return Deserialize::batchesPage($result);
             }
@@ -659,19 +659,19 @@ class Client implements \Psr\Log\LoggerAwareInterface
         }
 
         if (!empty($status)) {
-            $val = urlencode(join(',', $status));
+            $val = urlencode(implode(',', $status));
             array_push($params, 'status=' . $val);
         }
 
         if (!empty($code)) {
-            $val = urlencode(join(',', $code));
+            $val = urlencode(implode(',', $code));
             array_push($params, 'code=' . $val);
         }
 
         $path = '/delivery_report';
 
         if (!empty($params)) {
-            $path .= '?' . join('&', $params);
+            $path .= '?' . implode('&', $params);
         }
 
         $result = $this->_get($this->_batchUrl($batchId, $path));
@@ -821,12 +821,12 @@ class Client implements \Psr\Log\LoggerAwareInterface
                     }
 
                     if (null != $filter->getTags()) {
-                        $val = urlencode(join(',', $filter->getTags()));
+                        $val = urlencode(implode(',', $filter->getTags()));
                         array_push($params, 'tags=' . $val);
                     }
                 }
 
-                $q = join('&', $params);
+                $q = implode('&', $params);
                 $result = $this->_get($this->_url('/groups?' . $q));
                 return Deserialize::groupsPage($result);
             }
@@ -908,7 +908,7 @@ class Client implements \Psr\Log\LoggerAwareInterface
                     }
 
                     if (null != $filter->getRecipients()) {
-                        $val = urlencode(join(',', $filter->getRecipients()));
+                        $val = urlencode(implode(',', $filter->getRecipients()));
                         array_push($params, 'to=' . $val);
                     }
 
@@ -923,7 +923,7 @@ class Client implements \Psr\Log\LoggerAwareInterface
                     }
                 }
 
-                $q = join('&', $params);
+                $q = implode('&', $params);
                 $result = $this->_get($this->_url('/inbounds?' . $q));
                 return Deserialize::inboundsPage($result);
             }
